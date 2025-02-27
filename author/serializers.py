@@ -18,7 +18,7 @@ class AuthorSerializer(serializers.ModelSerializer):
 
 
 
-            if allowed_domains not in value:
+            if domain not in value:
                 raise serializers.ValidationError(f"Invalid email. You forgot to write '@' before your domain : {domain}")
             elif  allowed_domains not in value:
                 raise serializers.ValidationError(f"❌ {allowed_domains} dan foydalanish mumkin emas! /n Boshqa email bilan urinib ko'ring")  #bu yoda kod prosta sal pal prikol uchn ishlatildi
