@@ -1,3 +1,4 @@
+from rest_framework import permissions
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -7,6 +8,9 @@ from post.serializers import PostSerializer
 
 
 class TagListCreateAPIView(APIView):
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer
+    permission_classes = [permissions.IsAuthenticated]
     def get(self, request):
         tags = Tag.objects.all()
         serializer = TagSerializer(tags, many=True)

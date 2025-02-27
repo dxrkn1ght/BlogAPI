@@ -1,3 +1,4 @@
+from rest_framework import permissions
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -7,6 +8,9 @@ from .serializers import CommentSerializer
 
 
 class CommentListCreateAPIView(APIView):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+    permission_classes = [permissions.IsAuthenticated]
     def get(self, request):
         comments = Comment.objects.filter(parent_comment=None)
         serializer = CommentSerializer(comments, many=True)

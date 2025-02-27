@@ -1,3 +1,4 @@
+from rest_framework import permissions
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -7,10 +8,16 @@ from .serializers import AuthorSerializer
 
 
 class AuthorListCreateAPIView(APIView):
+    queryset = Author.objects.all()
+    serializer_class = AuthorSerializer
+    permission_classes = [permissions.IsAuthenticated]
     def get(self, request):
         authors = Author.objects.all()
         serializer = AuthorSerializer(authors, many=True)
         return Response(serializer.data)
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user) # manda bu qismda koplab muammola cqdi va shunchun shu bolimni qoshishga majbur bo'ldim
 
     def post(self, request):
         serializer = AuthorSerializer(data=request.data)

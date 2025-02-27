@@ -1,3 +1,4 @@
+from rest_framework import permissions
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -8,6 +9,9 @@ from .serializers import PostSerializer
 
 
 class PostListCreateAPIView(APIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    permission_classes = [permissions.IsAuthenticated]
     def get(self, request):
         posts = Post.objects.all()
         serializer = PostSerializer(posts, many=True)
