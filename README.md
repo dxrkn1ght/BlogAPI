@@ -38,3 +38,26 @@ python manage.py runserver
 
 - Python >= 2.0
 - Django >= 2.5
+````
+
+`you can test APIs with given endpoints`
+
+```
+http://127.0.0.1:8000/api/authors
+```
+
+```
+http://127.0.0.1:8000/api/categories
+```
+
+```
+http://127.0.0.1:8000/api/comments
+```
+
+```
+http://127.0.0.1:8000/api/posts
+```
+
+```
+http://127.0.0.1:8000/api/tags
+```
