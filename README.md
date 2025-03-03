@@ -5,12 +5,12 @@
 
 `pip install python`
 
-`git clone https://github.com/dxrkn1ght/e-commerce.git`
+`git clone https://github.com/dxrkn1ght/BlogAPI.git`
 
 ### Usage
 
 ```
-cd e-commerce
+cd BlogApi
 ```
 
 ```
